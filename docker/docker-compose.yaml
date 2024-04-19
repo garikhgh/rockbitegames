@@ -1,0 +1,60 @@
+version: '3.9'
+
+#networks:
+#  rockbitegames_network:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: 172.19.0.0/24
+#          gateway: 172.19.0.3
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+#    networks:
+#      - rockbitegames_network
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka-server:
+    image: confluentinc/cp-kafka:latest
+#    networks:
+#      - rockbitegames_network
+    hostname: kafka-server
+    container_name: kafka-server
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-server:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+
+
+  backend:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    container_name: backend
+    pull_policy: always
+    profiles: ["prod"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+#    networks:
+#      - rockbitegames_network
+    depends_on:
+      - kafka-server
+    ports:
+      - "8081:8081"

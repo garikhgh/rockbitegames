@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - MaterialEntityServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>MaterialEntityServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.rockbitegames.service.html">com.rockbitegames.service</a> &gt; MaterialEntityServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.025s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">addMaterial()</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">createMaterial()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">moveMaterial()</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">removeMaterial()</td>
+<td class="success">0.009s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2024-04-19T10:43:54.777+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.rockbitegames.service.MaterialEntityServiceTest]: MaterialEntityServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-19T10:43:54.786+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.rockbitegames.RockbitegamesApplication for test class com.rockbitegames.service.MaterialEntityServiceTest
+2024-04-19T10:43:54.793+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+2024-04-19T10:43:54.795+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ---------------------PLAYER NOTIFICATION: SENDING....----------------------------------
+2024-04-19T10:43:54.795+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a855 warehouse [f65e2163-125a-45ac-bf67-0f12007fc306,c54b3ea8-26e3-4de2-8605-613650860ecd], material :  event=WAREHOUSE IS CREATED 
+2024-04-19T10:43:54.795+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+2024-04-19T10:43:54.795+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a855, warehouse f65e2163-125a-45ac-bf67-0f12007fc306, material IRON could take 100 points.
+2024-04-19T10:43:54.795+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.795+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a855 warehouse f65e2163-125a-45ac-bf67-0f12007fc306, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a855 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a855, warehouse f65e2163-125a-45ac-bf67-0f12007fc306, material IRON could take 0 points.
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.796+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a855 warehouse f65e2163-125a-45ac-bf67-0f12007fc306, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a855, warehouse c54b3ea8-26e3-4de2-8605-613650860ecd, material IRON could take 100 points.
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a855 warehouse c54b3ea8-26e3-4de2-8605-613650860ecd, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.797+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a855 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.798+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.798+04:00  WARN 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a853 is not found
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ---------------------PLAYER NOTIFICATION: SENDING....----------------------------------
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse [371098e0-fa3e-453b-be26-6dacc43c60a2,85610f51-6935-47f3-aa3e-9c8833a2cf20], material :  event=WAREHOUSE IS CREATED 
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material IRON could take 100 points.
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material IRON capacity is 30 points.
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.802+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material IRON could take 70 points.
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material IRON capacity is 80 points.
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material IRON could take 20 points.
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material IRON could take 100 points.
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material IRON capacity is 10 points.
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material IRON could take 0 points.
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.803+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material IRON could take 90 points.
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.804+04:00  WARN 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854 does not have enough warehouse to store materials. lost points 10 .
+2024-04-19T10:43:54.804+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material BOLT could take 100 points.
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material BOLT capacity is 80 points.
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material BOLT could take 20 points.
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material BOLT could take 100 points.
+2024-04-19T10:43:54.805+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material BOLT capacity is 30 points.
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material BOLT could take 0 points.
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material BOLT could take 70 points.
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material BOLT capacity is 60 points.
+2024-04-19T10:43:54.806+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material BOLT could take 0 points.
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse 371098e0-fa3e-453b-be26-6dacc43c60a2, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854, warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material BOLT could take 40 points.
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a854 warehouse 85610f51-6935-47f3-aa3e-9c8833a2cf20, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.807+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.807+04:00  WARN 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a854 does not have enough warehouse to store materials. lost points 60 .
+2024-04-19T10:43:54.811+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+2024-04-19T10:43:54.811+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ---------------------PLAYER NOTIFICATION: SENDING....----------------------------------
+2024-04-19T10:43:54.811+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a856 warehouse [c3d84b05-11c0-447f-ad9c-c3d1db309b04,127f5aa2-32c2-48db-8005-b5784d5155e4], material :  event=WAREHOUSE IS CREATED 
+2024-04-19T10:43:54.811+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a856, warehouse c3d84b05-11c0-447f-ad9c-c3d1db309b04, material IRON could take 100 points.
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a856 warehouse c3d84b05-11c0-447f-ad9c-c3d1db309b04, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS FULL 
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a856 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.812+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.813+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a856, warehouse 127f5aa2-32c2-48db-8005-b5784d5155e4, material IRON could take 100 points.
+2024-04-19T10:43:54.813+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.813+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ---------------------MATERIAL NOTIFICATION: SENDING....-------------------------------
+2024-04-19T10:43:54.813+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a856 warehouse 127f5aa2-32c2-48db-8005-b5784d5155e4, material fc38ca94-ac2a-4c8b-a853-018668ac0455:  event=MATERIAL IS ZERO 
+2024-04-19T10:43:54.813+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.observer.MaterialNotificationSender  : ######################################################################################
+2024-04-19T10:43:54.813+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Player 79fd74b6-772f-41d6-941a-5d74ad06a856, warehouse 127f5aa2-32c2-48db-8005-b5784d5155e4, material IRON capacity is 0 points.
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a856 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL ADDITION 
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ---------------------WAREHOUSE NOTIFICATION: SENDING....------------------------------
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : Event, Player 79fd74b6-772f-41d6-941a-5d74ad06a856 warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455, material Iron:  event=WAREHOUSE: MATERIAL REMOVAL 
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.r.o.WarehouseNotificationSender        : ######################################################################################
+2024-04-19T10:43:54.814+04:00  INFO 37639 --- [Rockbitegames] [    Test worker] c.rockbitegames.service.MaterialService  : Material c3d84b05-11c0-447f-ad9c-c3d1db309b04 is removed from warehouse fc38ca94-ac2a-4c8b-a853-018668ac0455
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.7</a> at Apr 19, 2024, 10:43:54 AM</p>
+</div>
+</div>
+</body>
+</html>
