@@ -2,17 +2,24 @@ package com.rockbitegames.controller;
 
 import com.rockbitegames.domain.PlayerEntity;
 import com.rockbitegames.dto.PlayerDto;
+import com.rockbitegames.exception.KafkaMessageNotSentException;
 import com.rockbitegames.exception.OptionalExceptionHandler;
 import com.rockbitegames.messaging.KafkaProducer;
 import com.rockbitegames.service.PlayerService;
 import com.rockbitegames.util.GetOptionalValue;
+import com.rockbitegames.validator.PayerValidate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @RestController
@@ -26,8 +33,8 @@ public class PlayerController {
 
 
     @GetMapping("/player/all")
-    ResponseEntity<ConcurrentMap<String, PlayerEntity>> getAllPlayers() {
-        ConcurrentMap<String, PlayerEntity> allPlayers = playerService.getAll();
+    ResponseEntity<String> getAllPlayers() {
+        String allPlayers = playerService.getAll();
         return ResponseEntity.ok(allPlayers);
     }
 
@@ -38,9 +45,17 @@ public class PlayerController {
     }
 
     @PostMapping("/player/create")
-    ResponseEntity<String> createPlayer(@RequestBody PlayerDto playerDto) {
-        kafkaProducer.sendPlayer(playerDto);
-        return ResponseEntity.ok("Player is created.");
+    ResponseEntity<?> createPlayer(@RequestBody PlayerDto playerDto) throws KafkaMessageNotSentException {
+        try {
+            PayerValidate.PlayerValidator validate = PayerValidate.validate(playerDto);
+            if (validate.getErrorCounter()>0) {
+                return ResponseEntity.ok(validate);
+            }
+            Serializable serializable = kafkaProducer.sendPlayer(playerDto);
+            return ResponseEntity.ok(serializable);
+        } catch (KafkaMessageNotSentException e) {
+            throw  new KafkaMessageNotSentException("Kafka Producer exception");
+        }
     }
 
     @GetMapping("/player/{playerUuid}")

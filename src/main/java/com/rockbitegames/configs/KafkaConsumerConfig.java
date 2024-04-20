@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Configuration
 @Slf4j
-@Profile("prod")
+@Profile({"prod", "dev"})
 public class KafkaConsumerConfig {
 
     @Value(value = "${kafka.bootstrapAddress}")

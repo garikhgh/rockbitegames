@@ -9,7 +9,6 @@ import com.rockbitegames.util.GetOptionalValue;
 import com.rockbitegames.util.Log;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +32,7 @@ public class WarehouseService {
         try {
             PlayerEntity playerEntity = GetOptionalValue.getOptional(playerByUuid);
             playerEntity.setWarehouse(warehouseList);
+            playerEntity.setNumberOfWarehouses(numberOfWarehouses);
             return true;
         }
         catch (OptionalExceptionHandler e) {
@@ -52,7 +52,7 @@ public class WarehouseService {
         return warehouseEntityList;
     }
 
-    public Optional<WarehouseEntity> getWarehouseById(@NonNull String playerUuid, @NonNull String warehouseId1) {
+    public Optional<WarehouseEntity> findWarehouseById(@NonNull String playerUuid, @NonNull String warehouseId1) {
         Optional<WarehouseEntity> first = Optional.empty();
         ConcurrentMap<String, PlayerEntity> players = dataStorage.getPlayers();
         if (players.containsKey(playerUuid)) {
@@ -78,18 +78,37 @@ public class WarehouseService {
         return Optional.empty();
     }
 
+    public Optional<String> findWareHouseUuidForGivenPlayerToHostMaterial(@NonNull String playerUuid, @NonNull MaterialEntity materialEntity) {
+        ConcurrentMap<String, PlayerEntity> players = dataStorage.getPlayers();
+        if (players.containsKey(playerUuid)) {
+            PlayerEntity playerEntity = players.get(playerUuid);
+            return playerEntity.getWarehouseEntityList().stream()
+                    .filter(w-> (w.getMaterial().values().stream()
+                             .anyMatch(m->
+                                     m.getMaterialType().equals(materialEntity.getMaterialType()) &&
+                                     m.getMaterialCurrentValue() < m.getMaterialMaxCapacity()  &&
+                                             !m.getMaterialUuid().equals(materialEntity.getMaterialUuid())))
+                            || w.getMaterial().values().isEmpty())
+                    .map(WarehouseEntity::getWarehouseUuid)
+                    .findAny();
+        }
+        return Optional.empty();
+    }
+
     public Optional<String> findWarehouseUuidForGivenPlayerWithGivenMaterialUuid(@NonNull String playerUuid, @NonNull String materialUuid) {
         ConcurrentMap<String, PlayerEntity> players = dataStorage.getPlayers();
         if (players.containsKey(playerUuid)) {
             PlayerEntity playerEntity = players.get(playerUuid);
             return playerEntity.getWarehouseEntityList().stream()
-                    .map(w -> {
+                    .filter(w -> {
                         Optional<String> first = w.getMaterial().values().stream()
                                 .filter(material -> material.getMaterialUuid().equals(materialUuid))
                                 .map(MaterialEntity::getWarehouseUuid)
-                                .findFirst();
-                        return first.orElse("");
-                    }).findFirst();
+                                .findAny();
+                        return first.isPresent();
+                    })
+                    .map(WarehouseEntity::getWarehouseUuid)
+                    .findAny();
         }
         return Optional.empty();
     }

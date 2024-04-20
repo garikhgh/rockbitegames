@@ -1,5 +1,9 @@
 package com.rockbitegames.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.rockbitegames.domain.PlayerEntity;
 import com.rockbitegames.data.DataStorage;
 import com.rockbitegames.exception.NewPlayerCreationException;
@@ -18,6 +22,7 @@ import java.util.concurrent.ConcurrentMap;
 public class PlayerService {
 
     private final DataStorage dataStorage;
+    private final ObjectMapper objectMapper;
 
     public Optional<PlayerEntity> getPlayerByUuid(@NonNull String playerUuid) {
         ConcurrentMap<String, PlayerEntity> players = dataStorage.getPlayers();
@@ -30,22 +35,27 @@ public class PlayerService {
             if (!players.containsKey(playerEntity.getPlayerUuid())) {
                 players.put(playerEntity.getPlayerUuid(), playerEntity);
                 return true;
+            } else {
+                Log.warn(log, "Player with uuid {} exists", playerEntity.getPlayerUuid());
             }
         } catch (NewPlayerCreationException e) {
             Log.error(log, "Could not create new Player with uuid {}", playerEntity.getPlayerUuid());
         }
-
         return false;
     }
 
-    public ConcurrentMap<String, PlayerEntity> getAll() {
-        return dataStorage.getPlayers();
+    public String getAll() {
+        // for testing purposes
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(dataStorage.getPlayers());
+        Log.info(log, json);
+        return json;
     }
 
     public void deleteAll() {
         dataStorage.removeAll();
     }
 
-    // other relevant methods could be added if needed
+    // todo: other relevant methods could be added if needed
 
 }

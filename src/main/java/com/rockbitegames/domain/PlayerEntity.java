@@ -27,8 +27,7 @@ public class PlayerEntity implements ObserverInstanceInvoker {
         subscribe();
     }
 
-
-    private ObserverManger observerManger;
+    private transient ObserverManger observerManger;
     private String playerUuid;
     private String playerName;
     private String playerEmail;

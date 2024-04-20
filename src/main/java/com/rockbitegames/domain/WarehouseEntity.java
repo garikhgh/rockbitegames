@@ -1,5 +1,6 @@
 package com.rockbitegames.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rockbitegames.observer.ObserverManger;
 import com.rockbitegames.observer.WarehouseNotificationSender;
 import lombok.*;
@@ -29,7 +30,7 @@ public class WarehouseEntity implements ObserverInstanceInvoker {
                 subscribe();
         }
 
-        private ObserverManger observerManger;
+        private transient ObserverManger observerManger;
         private String warehouseUuid;
         private ConcurrentMap<MaterialType, MaterialEntity> material = new ConcurrentHashMap<>();
 

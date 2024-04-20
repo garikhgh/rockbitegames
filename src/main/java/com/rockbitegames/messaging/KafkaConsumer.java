@@ -4,24 +4,27 @@ package com.rockbitegames.messaging;
 import com.rockbitegames.domain.MaterialEntity;
 import com.rockbitegames.domain.PlayerEntity;
 import com.rockbitegames.dto.MaterialDto;
-import com.rockbitegames.dto.MaterialState;
 import com.rockbitegames.dto.PlayerDto;
 import com.rockbitegames.exception.NewPlayerCreationException;
 import com.rockbitegames.service.MapperService;
 import com.rockbitegames.service.MaterialService;
 import com.rockbitegames.service.PlayerService;
 import com.rockbitegames.service.WarehouseService;
+import com.rockbitegames.util.GetOptionalValue;
 import com.rockbitegames.util.Log;
+import com.rockbitegames.util.WarehouseServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
-@Profile("prod")
+@Profile({"prod", "dev"})
 public class KafkaConsumer {
 
     private final PlayerService playerService;
@@ -37,6 +40,7 @@ public class KafkaConsumer {
         switch (materialDto.getMaterialState()) {
             case REMOVE: {
                 materialEntity.invokeObserverInstance();
+                WarehouseServiceUtil.setWarehouseUuidToMaterial(warehouseService, materialEntity, materialDto);
                 boolean status = materialService.removeMaterial(materialDto.getPlayerUuid(), materialEntity);
                 Log.info(log, "Player {} receiving new material. Is new Material {} added {}", materialDto.getPlayerUuid(), materialDto.getMaterialUuid(), status);
                 break;
@@ -49,6 +53,18 @@ public class KafkaConsumer {
             }
             case MOVE: {
                 materialEntity.invokeObserverInstance();
+
+                Optional<MaterialEntity> materialToBeMovedOptional =
+                        materialService.findPlayerMaterialByMaterialUuid(materialDto.getPlayerUuid(), materialDto.getMaterialUuid());
+                MaterialEntity materialToBeMoved = GetOptionalValue.getOptional(materialToBeMovedOptional);
+
+                Optional<String> whHostUuidOptional =
+                        warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(materialDto.getPlayerUuid(), materialEntity);
+                String whUuidHost = GetOptionalValue.getOptional(whHostUuidOptional);
+
+                materialEntity.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
+                materialService.moveMaterial(materialDto.getPlayerUuid(), whUuidHost, materialEntity);
+
                 boolean status = materialService.moveMaterial(materialDto.getPlayerUuid(), materialDto.getWarehouseUuidToHostMaterial(), materialEntity);
                 Log.info(log, "Player {} receiving new material. Is new Material {} added {}", materialDto.getPlayerUuid(), materialDto.getMaterialUuid(), status);
                 break;

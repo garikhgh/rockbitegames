@@ -12,7 +12,9 @@ import static com.rockbitegames.constants.ConstantValues.*;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class MaterialEntity implements ObserverInstanceInvoker{
+public class MaterialEntity implements ObserverInstanceInvoker {
+
+
 
 
     public MaterialEntity() {
@@ -21,11 +23,22 @@ public class MaterialEntity implements ObserverInstanceInvoker{
 
     @Override
     public void invokeObserverInstance() {
-        this.observerManger = new ObserverManger(MATERIAL_IS_FULL, MATERIAL_IS_ZERO);
+        this.observerManger = new ObserverManger(MATERIAL_IS_FULL, MATERIAL_IS_ZERO, MATERIAL_IS_SUBTRACTED);
         subscribe();
     }
-
-    private ObserverManger observerManger;
+    public MaterialEntity backupMaterial() {
+        MaterialEntity m = new MaterialEntity();
+        m.setMaterialUuid(this.getMaterialUuid());
+        m.setMaterialType(this.getMaterialType());
+        m.setWarehouseUuid(this.getWarehouseUuid());
+        m.setMaterialMaxCapacity(this.getMaterialMaxCapacity());
+        m.setMaterialCurrentValue(this.getMaterialCurrentValue());
+        m.setName(this.getName());
+        m.setDescription(this.getDescription());
+        m.setIcon(this.getIcon());
+        return m;
+    }
+    private transient ObserverManger observerManger;
 
     private String materialUuid;
     private String warehouseUuid;
@@ -37,6 +50,11 @@ public class MaterialEntity implements ObserverInstanceInvoker{
     private String icon;
 
     public void setMaterialCurrentValue(Integer materialCurrentValue, String playerUuid) {
+
+        if (this.materialCurrentValue > materialCurrentValue) {
+            this.observerManger.notify(MATERIAL_IS_SUBTRACTED, playerUuid, this.warehouseUuid, this.materialUuid);
+        }
+
         this.materialCurrentValue = materialCurrentValue;
         sendNotification(playerUuid);
     }
@@ -44,6 +62,7 @@ public class MaterialEntity implements ObserverInstanceInvoker{
     public void subscribe() {
         observerManger.subscribe(MATERIAL_IS_FULL, new MaterialNotificationSender());
         observerManger.subscribe(MATERIAL_IS_ZERO, new MaterialNotificationSender());
+        observerManger.subscribe(MATERIAL_IS_SUBTRACTED, new MaterialNotificationSender());
     }
 
     private void sendNotification(String playerUuid) {

@@ -19,6 +19,7 @@ public class ConstantValues {
 
     public static final String MATERIAL_IS_FULL =  "MATERIAL IS FULL";
     public static final String MATERIAL_IS_ZERO =  "MATERIAL IS ZERO";
+    public static final String MATERIAL_IS_SUBTRACTED =  "MATERIAL IS SUBTRACTED";
 
     public static final String WAREHOUSE_IS_CREATED =  "WAREHOUSE IS CREATED";
 

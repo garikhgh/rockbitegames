@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 class PlayerServiceTest {
 
     private final String playerUuid1 = "19fd74b6-772f-41d6-941a-5d74ad06a853";
