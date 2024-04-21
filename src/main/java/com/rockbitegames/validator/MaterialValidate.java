@@ -3,6 +3,7 @@ package com.rockbitegames.validator;
 import com.rockbitegames.domain.MaterialType;
 import com.rockbitegames.dto.MaterialDto;
 import com.rockbitegames.dto.MaterialState;
+import com.rockbitegames.exception.MaterialNullabilityException;
 import com.rockbitegames.exception.WrongMaterialStateException;
 import com.rockbitegames.util.Log;
 import com.rockbitegames.util.WarehouseServiceUtil;
@@ -20,6 +21,7 @@ public class MaterialValidate {
     private static final Logger logger = LoggerFactory.getLogger(WarehouseServiceUtil.class);
 
     public static MaterialValidator validateMaterial(MaterialDto materialDto) {
+        materialNullabilityValidator(materialDto);
         MaterialValidator materialValidator = new MaterialValidator();
         MaterialState materialState = materialDto.getMaterialState();
         materialStateValidator(materialValidator, materialDto);
@@ -27,6 +29,12 @@ public class MaterialValidate {
         materialCapacityValidator(materialValidator ,materialDto);
 
         return materialValidator;
+    }
+
+    private static void materialNullabilityValidator(MaterialDto materialDto) {
+        if (materialDto == null) {
+            throw new MaterialNullabilityException("Material could not be null.");
+        }
     }
 
     private static void materialStateValidator(MaterialValidator materialValidator, MaterialDto materialDto) {

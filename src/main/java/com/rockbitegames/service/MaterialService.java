@@ -40,15 +40,13 @@ public class MaterialService {
             } else {
                 for (WarehouseEntity wh : warehouseEntityList) {
                     ConcurrentMap<MaterialType, MaterialEntity> material = wh.getMaterial();
-                    if (material == null || !material.containsKey(materialEntity.getMaterialType())) {
+                    if (material.isEmpty() || !material.containsKey(materialEntity.getMaterialType())) {
 
                         MaterialEntity newMaterial = composeNewMaterial(materialEntity, wh.getWarehouseUuid());
                         newMaterial.setWarehouseUuid(wh.getWarehouseUuid());
                         remainingMaterialData = updateMaterialValue(playerUuid, wh.getWarehouseUuid(), newMaterial, materialEntity);
-                        ConcurrentMap<MaterialType, MaterialEntity> newMaterialToAdd = new ConcurrentHashMap<>();
-                        newMaterialToAdd.put(newMaterial.getMaterialType(), newMaterial);
-
-                        wh.setMaterial(playerUuid, materialEntity, newMaterialToAdd);
+//                        ConcurrentMap<MaterialType, MaterialEntity> newMaterialToAdd = new ConcurrentHashMap<>();
+                        wh.setMaterial(playerUuid, materialEntity, newMaterial);
 
                         flag = true;
                     } else {
@@ -101,7 +99,7 @@ public class MaterialService {
 
                 WarehouseEntity host = GetOptionalValue.getOptional(hostWarehouseOptional);
                 ConcurrentMap<MaterialType, MaterialEntity> hostMaterial = host.getMaterial();
-                if (material.containsKey(materialEntity.getMaterialType())) {
+                if (hostMaterial.containsKey(materialEntity.getMaterialType())) {
                     MaterialEntity hm = hostMaterial.get(materialEntity.getMaterialType());
                     if (hm == null) {
                         hm = composeNewMaterial(materialEntity, hostWarehouse);
@@ -115,9 +113,10 @@ public class MaterialService {
                     }
                     return true;
                 } else {
-                    ConcurrentMap<MaterialType, MaterialEntity> newMaterialToAdd =
-                            composeWarehouseForGivenPlayerAndMaterial(playerUuid, materialEntity, host);
-                    host.setMaterial(playerUuid, materialEntity, newMaterialToAdd);
+//                    ConcurrentMap<MaterialType, MaterialEntity> newMaterialToAdd =
+//                            composeWarehouseForGivenPlayerAndMaterial(playerUuid, materialEntity, host);
+                    MaterialEntity put = host.getMaterial().put(materialEntity.getMaterialType(), materialEntity);
+                    host.setMaterial(playerUuid, materialEntity, materialEntity);
                     return true;
                 }
             } catch (OptionalExceptionHandler e) {

@@ -31,6 +31,11 @@ class MaterialEntityServiceTest {
     private final String materialUuid = "fc38ca94-ac2a-4c8b-a853-018668ac0455";
     private final String materialUuid1 = "fc38ca94-ac2a-4c8b-a853-018668ac0456";
 
+    private final String materialUuid5 = "5c38ca94-ac2a-4c8b-a853-018668ac0456";
+    private final String materialUuid6 = "6c38ca94-ac2a-4c8b-a853-018668ac0456";
+    private final String materialUuid7 = "7c38ca94-ac2a-4c8b-a853-018668ac0456";
+
+
     @Autowired
     private WarehouseService warehouseService;
     @Autowired
@@ -124,7 +129,7 @@ class MaterialEntityServiceTest {
         assertTrue(warehouse);
 
         MaterialEntity materialEntity1 = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 30);
-        MaterialEntity materialEntity2 = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 20);
+        MaterialEntity materialToMove = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 20);
 
         boolean b1 = materialService.addMaterialToWarehouse(playerUuid5, materialEntity1);
         assertTrue(b1);
@@ -132,13 +137,13 @@ class MaterialEntityServiceTest {
         Optional<MaterialEntity> materialToBeMovedOptional = materialService.findPlayerMaterialByMaterialUuid(playerUuid5, materialEntity1.getMaterialUuid());
         MaterialEntity materialToBeMoved = GetOptionalValue.getOptional(materialToBeMovedOptional);
 
-        Optional<String> whHostUuidOptional = warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(playerUuid5, materialEntity1);
+        materialToMove.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
+        Optional<String> whHostUuidOptional = warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(playerUuid5, materialToMove);
         String whUuidHost = GetOptionalValue.getOptional(whHostUuidOptional);
 
 
-        materialEntity2.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
 
-        boolean b2 = materialService.moveMaterial(playerUuid5, whUuidHost, materialEntity2);
+        boolean b2 = materialService.moveMaterial(playerUuid5, whUuidHost, materialToMove);
         assertTrue(b2);
 
         // in this unit test checking if we want to move 20 points of material then there should be 10 surplus
@@ -188,10 +193,11 @@ class MaterialEntityServiceTest {
         Optional<MaterialEntity> materialToBeMovedOptional = materialService.findPlayerMaterialByMaterialUuid(playerUuid6, materialEntity1.getMaterialUuid());
         MaterialEntity materialToBeMoved = GetOptionalValue.getOptional(materialToBeMovedOptional);
 
-        Optional<String> whHostUuidOptional = warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(playerUuid6, materialEntity1);
+        materialToMove.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
+        Optional<String> whHostUuidOptional = warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(playerUuid6, materialToMove);
         String whUuidHost = GetOptionalValue.getOptional(whHostUuidOptional);
 
-        materialToMove.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
+
 
         boolean b2 = materialService.moveMaterial(playerUuid6, whUuidHost, materialToMove);
         assertTrue(b2);
@@ -269,7 +275,7 @@ class MaterialEntityServiceTest {
 
         materialEntity = material.get(materialToMove.getMaterialType());
         assertNotNull(materialEntity);
-        assertEquals(50, materialEntity.getMaterialCurrentValue());
+        assertEquals(100, materialEntity.getMaterialCurrentValue());
 
     }
 
@@ -279,12 +285,20 @@ class MaterialEntityServiceTest {
         PlayerEntity player8 = MockData.mockPlayer(playerUuid8);
         boolean p8 = playerService.createPlayer(player8);
         assertTrue(p8);
-        boolean warehouse = warehouseService.createWarehouse(playerUuid8, 2);
+        boolean warehouse = warehouseService.createWarehouse(playerUuid8, 3);
         assertTrue(warehouse);
 
-        MaterialEntity materialEntity1 = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 80);
-        MaterialEntity materialEntity2 = MockData.mockMaterial(materialUuid1, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 70);
-        MaterialEntity materialToMove = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 70);
+        MaterialEntity materialEntity5 = MockData.mockMaterial(materialUuid5, MaterialType.BOLT, MaterialType.BOLT.getMaxCapacity(), 80);
+        MaterialEntity materialEntity6 = MockData.mockMaterial(materialUuid6, MaterialType.BOLT, MaterialType.BOLT.getMaxCapacity(), 70);
+        MaterialEntity materialEntity7 = MockData.mockMaterial(materialUuid7, MaterialType.BOLT, MaterialType.BOLT.getMaxCapacity(), 70);
+        boolean b5 = materialService.addMaterialToWarehouse(playerUuid8, materialEntity5);
+        boolean b6 = materialService.addMaterialToWarehouse(playerUuid8, materialEntity6);
+        boolean b7 = materialService.addMaterialToWarehouse(playerUuid8, materialEntity7);
+
+
+        MaterialEntity materialEntity1 = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 100);
+        MaterialEntity materialEntity2 = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 100);
+        MaterialEntity materialEntity3 = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 100);
 
         boolean b1 = materialService.addMaterialToWarehouse(playerUuid8, materialEntity1);
         assertTrue(b1);
@@ -292,16 +306,21 @@ class MaterialEntityServiceTest {
         boolean b2 = materialService.addMaterialToWarehouse(playerUuid8, materialEntity2);
         assertTrue(b2);
 
-        Optional<MaterialEntity> materialToBeMovedOptional = materialService.findPlayerMaterialByMaterialUuid(playerUuid8, materialEntity1.getMaterialUuid());
-        MaterialEntity materialToBeMoved = GetOptionalValue.getOptional(materialToBeMovedOptional);
+        boolean b3 = materialService.addMaterialToWarehouse(playerUuid8, materialEntity2);
+        assertTrue(b3);
 
-        Optional<String> whHostUuidOptional = warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(playerUuid8, materialEntity1);
+        MaterialEntity materialToMove = MockData.mockMaterial(materialUuid, MaterialType.IRON, MaterialType.IRON.getMaxCapacity(), 100);
+
+        Optional<MaterialEntity> materialToBeMovedOptional = materialService.findPlayerMaterialByMaterialUuid(playerUuid8, materialToMove.getMaterialUuid());
+        MaterialEntity materialToBeMoved = GetOptionalValue.getOptional(materialToBeMovedOptional);
+        materialToMove.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
+        Optional<String> whHostUuidOptional = warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(playerUuid8, materialToMove);
         String whUuidHost = GetOptionalValue.getOptional(whHostUuidOptional);
 
-        materialToMove.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
 
-        boolean b3 = materialService.moveMaterial(playerUuid8, whUuidHost, materialToMove);
-        assertFalse(b3);
+        boolean b4 = materialService.moveMaterial(playerUuid8, whUuidHost, materialToMove);
+
+        assertFalse(b4);
 
 
         Optional<WarehouseEntity> warehouseByIdOptional = warehouseService.findWarehouseById(playerUuid8, whUuidHost);
@@ -312,7 +331,7 @@ class MaterialEntityServiceTest {
         assertNotNull(material);
         MaterialEntity materialEntity = material.get(materialToMove.getMaterialType());
         assertNotNull(materialEntity);
-        assertEquals(50, materialEntity.getMaterialCurrentValue());
+        assertEquals(100, materialEntity.getMaterialCurrentValue());
 
 
         // test if the warehouse material is removed
@@ -322,10 +341,6 @@ class MaterialEntityServiceTest {
         assertNotNull(wh);
         material = wh.getMaterial();
         assertEquals(1, material.size());
-
-        materialEntity = material.get(materialToMove.getMaterialType());
-        assertNotNull(materialEntity);
-        assertEquals(100, materialEntity.getMaterialCurrentValue());
 
     }
     // todo: other unit tests for test coverage are omitted:

@@ -34,8 +34,8 @@ public class WarehouseEntity implements ObserverInstanceInvoker {
         private String warehouseUuid;
         private ConcurrentMap<MaterialType, MaterialEntity> material = new ConcurrentHashMap<>();
 
-        public void setMaterial(String playerUuid, MaterialEntity materialEntity, ConcurrentMap<MaterialType, MaterialEntity> m) {
-                this.material = m;
+        public void setMaterial(String playerUuid, MaterialEntity materialEntity, MaterialEntity m) {
+                this.material.put(m.getMaterialType(), m);
                 this.observerManger.notify(WAREHOUSE_MATERIAL_ADD, playerUuid, materialEntity.getMaterialUuid(), materialEntity.getName());
 
         }

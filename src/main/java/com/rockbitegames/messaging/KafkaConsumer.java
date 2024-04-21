@@ -58,14 +58,13 @@ public class KafkaConsumer {
                         materialService.findPlayerMaterialByMaterialUuid(materialDto.getPlayerUuid(), materialDto.getMaterialUuid());
                 MaterialEntity materialToBeMoved = GetOptionalValue.getOptional(materialToBeMovedOptional);
 
+                materialEntity.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
                 Optional<String> whHostUuidOptional =
                         warehouseService.findWareHouseUuidForGivenPlayerToHostMaterial(materialDto.getPlayerUuid(), materialEntity);
                 String whUuidHost = GetOptionalValue.getOptional(whHostUuidOptional);
 
-                materialEntity.setWarehouseUuid(materialToBeMoved.getWarehouseUuid());
-                materialService.moveMaterial(materialDto.getPlayerUuid(), whUuidHost, materialEntity);
 
-                boolean status = materialService.moveMaterial(materialDto.getPlayerUuid(), materialDto.getWarehouseUuidToHostMaterial(), materialEntity);
+                boolean status = materialService.moveMaterial(materialDto.getPlayerUuid(), whUuidHost, materialEntity);
                 Log.info(log, "Player {} receiving new material. Is new Material {} added {}", materialDto.getPlayerUuid(), materialDto.getMaterialUuid(), status);
                 break;
             }

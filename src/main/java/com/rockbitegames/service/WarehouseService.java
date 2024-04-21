@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -83,13 +85,8 @@ public class WarehouseService {
         if (players.containsKey(playerUuid)) {
             PlayerEntity playerEntity = players.get(playerUuid);
             return playerEntity.getWarehouseEntityList().stream()
-                    .filter(w-> (w.getMaterial().values().stream()
-                             .anyMatch(m->
-                                     m.getMaterialType().equals(materialEntity.getMaterialType()) &&
-                                     m.getMaterialCurrentValue() < m.getMaterialMaxCapacity()  &&
-                                             !m.getMaterialUuid().equals(materialEntity.getMaterialUuid())))
-                            || w.getMaterial().values().isEmpty())
                     .map(WarehouseEntity::getWarehouseUuid)
+                    .filter(warehouseUuid -> !warehouseUuid.equals(materialEntity.getWarehouseUuid()))
                     .findAny();
         }
         return Optional.empty();

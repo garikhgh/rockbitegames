@@ -28,9 +28,9 @@ public class MockData {
         m.setMaterialType(materialType);
         m.setMaterialMaxCapacity(capacity);
         m.setMaterialCurrentValue(currentValue);
-        m.setName("Iron");
+        m.setName(materialType.name());
         m.setDescription("To made shields.");
-        m.setIcon("Iron Icon");
+        m.setIcon("Iron " + materialType.name());
         return m;
     }
 }

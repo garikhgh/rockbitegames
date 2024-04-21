@@ -1,7 +1,6 @@
 package com.rockbitegames.validator;
 
 
-import com.rockbitegames.domain.PlayerEntity;
 import com.rockbitegames.dto.PlayerDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
