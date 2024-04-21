@@ -10,16 +10,11 @@ import com.rockbitegames.util.GetOptionalValue;
 import com.rockbitegames.validator.PayerValidate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.producer.RecordMetadata;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.io.Serializable;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @RestController
@@ -31,6 +26,11 @@ public class PlayerController {
     private final PlayerService playerService;
     private final KafkaProducer kafkaProducer;
 
+    @GetMapping("/player/statistics")
+    ResponseEntity<PlayerService.PlayerStatistics> getPlayerStatistics() {
+        PlayerService.PlayerStatistics playersStatistics = playerService.getPlayersStatistics();
+        return ResponseEntity.ok(playersStatistics);
+    }
 
     @GetMapping("/player/all")
     ResponseEntity<String> getAllPlayers() {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.rockbitegames.service.PlayerServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-04-21T12:36:45" hostname="garik" time="0.005">
+  <properties/>
+  <testcase name="getPlayerByUuid()" classname="com.rockbitegames.service.PlayerServiceTest" time="0.002"/>
+  <testcase name="createPlayer()" classname="com.rockbitegames.service.PlayerServiceTest" time="0.002"/>
+  <system-out><![CDATA[2024-04-21T16:36:45.584+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.rockbitegames.service.PlayerServiceTest]: PlayerServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-21T16:36:45.585+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.rockbitegames.RockbitegamesApplication for test class com.rockbitegames.service.PlayerServiceTest
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

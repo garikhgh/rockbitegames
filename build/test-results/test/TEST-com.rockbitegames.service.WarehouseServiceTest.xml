@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.rockbitegames.service.WarehouseServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-21T12:36:45" hostname="garik" time="0.002">
+  <properties/>
+  <testcase name="createWarehouseWithPlayer()" classname="com.rockbitegames.service.WarehouseServiceTest" time="0.002"/>
+  <system-out><![CDATA[2024-04-21T16:36:45.593+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.rockbitegames.service.WarehouseServiceTest]: WarehouseServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-04-21T16:36:45.594+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.rockbitegames.RockbitegamesApplication for test class com.rockbitegames.service.WarehouseServiceTest
+2024-04-21T16:36:45.597+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+2024-04-21T16:36:45.597+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ---------------------PLAYER NOTIFICATION: SENDING....----------------------------------
+2024-04-21T16:36:45.597+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : Event, Player 69fd74b6-772f-41d6-941a-5d74ad06a853 warehouse [c5647101-8706-4ca5-8edd-e63d37d35e3d], material :  event=WAREHOUSE IS CREATED 
+2024-04-21T16:36:45.597+04:00  INFO 176426 --- [Rockbitegames] [    Test worker] c.r.observer.PlayerNotificationSender    : ######################################################################################
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

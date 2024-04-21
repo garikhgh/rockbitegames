@@ -1,4 +1,4 @@
-from locust import HttpUser, task, between
+
 from confluent_kafka import Producer
 from confluent_kafka.serialization import StringSerializer
 import json

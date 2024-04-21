@@ -27,7 +27,12 @@ $ docker-compose --profile prod up -d
 curl -X GET http://localhost:8081/api/v1/player/all \
 -H "Content-Type: application/json" 
 ```
-
+### Get Players Statistics
+#### For testing purposes 
+```bash
+curl -X GET http://localhost:8081/api/v1/player/statistics \
+-H "Content-Type: application/json" 
+```
 ### DELETE All Players
 #### NOTE: Just for testing purposes. You can run this command to clean the storage.
 ```bash
