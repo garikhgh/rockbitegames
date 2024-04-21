@@ -34,7 +34,7 @@ public class KafkaConsumer {
 
 
     @KafkaListener(topics = "material", containerFactory = "kafkaListenerContainerFactoryForMaterial", groupId = "materialGroupId")
-    public void materialListener(MaterialDto materialDto) {
+    public synchronized void materialListener(MaterialDto materialDto) {
         MaterialEntity materialEntity = mapperService.toMaterialEntity(materialDto);
 
         switch (materialDto.getMaterialState()) {
@@ -74,7 +74,7 @@ public class KafkaConsumer {
     }
 
     @KafkaListener(topics = "player", containerFactory = "kafkaListenerContainerFactoryForPlayer", groupId = "playerGroupId")
-    public void addPlayer(PlayerDto playerDto) {
+    public synchronized void addPlayer(PlayerDto playerDto) {
         try {
             PlayerEntity playerEntity = mapperService.toPlayerEntity(playerDto);
             playerEntity.invokeObserverInstance();

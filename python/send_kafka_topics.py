@@ -24,9 +24,8 @@ class KafkaUser():
     def on_stop(self):
         self.producer.flush()
 
-    @task
     def send_message(self):
-        name = random.randint(1, 100)
+        name = random.randint(1, 25)
         wh_qty = random.randint(1, 5)
         message = {"playerUuid": str(uuid.uuid4()),
                    "playerName": "name_" + str(name),

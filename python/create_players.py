@@ -37,7 +37,7 @@ uuid_list = [uuid.uuid1() for _ in range(10)]
 
 def create_players():
      for i in range(10):
-          time.sleep(1)
+          time.sleep(0.5)
           player.update({"playerUuid": str(uuid_list[i])})
           player.update({"numberOfWarehouses": random.randint(0, 5)})
           response = requests.post(url=url_create_player,
@@ -50,17 +50,17 @@ def randomly_add_materials_to_random_players(material):
     
     material_payload.update({"materialType": material})
     for i in range(10):
-
+        
         material_payload.update({"playerUuid": str(uuid_list[i])})
-        material_payload.update({"materialMaxCapacity": str(random.randint(100, 500))})
+        material_payload.update({"materialMaxCapacity": str(random.randint(50, 150))})
         material_payload.update({"materialCurrentValue": str(random.randint(0, 100))})
         material_payload.update({"materialUuid": str(uuid.uuid1())})
 
-        time.sleep(1)
+        time.sleep(0.5)
         response = requests.post(url=url_create_material,
                       data=json.dumps(material_payload),
                       headers=header)
-        print("Material ", i, "creation statusCode=", response.status_code, "thread ", threading.get_native_id())
+        print("Material ", i , "Material ", material , "creation statusCode=", response.status_code, "thread ", threading.get_native_id())
 
 
 if __name__ == "__main__":

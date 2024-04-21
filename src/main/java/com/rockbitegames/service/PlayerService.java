@@ -35,7 +35,7 @@ public class PlayerService {
         return Optional.ofNullable(players.get(playerUuid));
     }
 
-    public boolean createPlayer(@NonNull PlayerEntity playerEntity) {
+    public synchronized boolean createPlayer(@NonNull PlayerEntity playerEntity) {
         try {
             ConcurrentMap<String, PlayerEntity> players = dataStorage.getPlayers();
             if (!players.containsKey(playerEntity.getPlayerUuid())) {

@@ -26,11 +26,11 @@ public class KafkaTopicConfig {
     }
     @Bean
     public NewTopic newMaterialTopicAdd() {
-        return new NewTopic("materialAdd", 1, (short) 1);
+        return new NewTopic("materialAdd", 3, (short) 1);
     }
 
     @Bean
     public NewTopic newPlayerTopic() {
-        return new NewTopic("player", 1, (short) 1);
+        return new NewTopic("player", 3, (short) 1);
     }
 }

@@ -6,16 +6,20 @@
 
 ## These are commands to test the application
 
-### Build the application
+### Build and Run the application
 ```bash
 $ ./gradlew clean build -Pspring.profiles.active=prod
-```
-
-### Run the application
-```bash
 $ cd ./docker/
 $ docker-compose --profile prod up -d
 ```
+
+### Stop the Application.
+```bash
+$ cd ./docker/
+$ docker-compose --profile prod down
+$ docker rmi -f $(docker images 'rockbitegames-backend' -a -q)
+```
+
 
 ### WAIT SEVERAL SECONDS CONNECTION TO BE ESTABLISHED
 
@@ -326,9 +330,3 @@ curl -X GET http://localhost:8081/api/v1/player/all \
 -H "Content-Type: application/json" 
 ```
 
-Stop the Application.
-```bash
-$ cd ./docker/
-$ docker-compose --profile prod down
-$ docker rmi -f $(docker images 'rockbitegames-backend' -a -q)
-```
