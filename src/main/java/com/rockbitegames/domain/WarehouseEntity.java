@@ -1,6 +1,5 @@
 package com.rockbitegames.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rockbitegames.observer.ObserverManger;
 import com.rockbitegames.observer.WarehouseNotificationSender;
 import lombok.*;
